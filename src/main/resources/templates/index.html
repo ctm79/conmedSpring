@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Inicio</h1>
+        <a th:href="@{/agregar}">Crear Paciente</a>
+        <div th:if="${pacientes != null and !pacientes.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="paciente : ${pacientes}">
+                    <td th:text="${paciente.nombre}">Mostrar Nombre</td>
+                    <td th:text="${paciente.apellidos}">Mostrar Apellido</td>
+                    <td th:text="${paciente.email}">Mostrar Email</td>
+                    <td th:text="${paciente.tlf1}">Mostrar Teléfono</td>
+                    <td><a th:href="@{/editar/} + ${paciente.id_paciente}" th:text="Editar"/></td>
+                    <td><a th:href="@{/eliminar(id_paciente=${paciente.id_paciente})}" th:text="Eliminar"/></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${pacientes == null or pacientes.empty}">
+            La lista de pacientes está vacía
+        </div>
+        
+    </body>
+</html>

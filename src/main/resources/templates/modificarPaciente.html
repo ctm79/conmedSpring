@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Datos del Paciente</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Datos del Paciente</h1>
+        <a th:href="@{/}">Volver</a>
+        <br/>
+        <form th:action="@{/guardar}" method="post" th:object="${paciente}">
+            <input type="hidden" name="id_paciente" th:field="*{id_paciente}"/>
+            <br/>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Nombre no puede estar vacio</span>
+            <br/>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" th:field="*{apellidos}"/>
+            <br/>
+            <label for="email">Email:</label>
+            <input type="email" name="email" th:field="*{email}"/>
+            <br/>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" name="telefono" th:field="*{tlf1}"/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+    </body>
+</html>
