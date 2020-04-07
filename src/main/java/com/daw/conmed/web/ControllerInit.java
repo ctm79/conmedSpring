@@ -5,8 +5,8 @@
  */
 package com.daw.conmed.web;
 
-import com.daw.conmed.domain.Paciente;
-import com.daw.conmed.service.PacienteService;
+import com.daw.conmed.domain.*;
+import com.daw.conmed.service.*;
 import java.util.List;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
