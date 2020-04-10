@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Menu</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header>
+            <h1>Consulta Médica</h1>      
+        </header> 
+        <nav th:fragment="menu">
+            <ul>
+                <li><a href="#">Pacientes</a>
+                    <ul>
+                        <li><a href="http://localhost:8080/agregar">Alta de Paciente</a></li>
+                        <li><a href="#">Consultar Pacientes</a></li>
+                        <li><a href="#">Buscar Pacientes</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Citas</a>
+                    <ul>
+                        <li><a href="#">Agenda de Citas</a></li>
+                        <li><a href="#">Histórico de Citas</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Recetas</a></li>
+                <li><a href="#">Cartas</a></li>
+                <li><a href="#">Analíticas</a></li>
+                <li><a href="#">Facturas</a>
+                    <ul>
+                        <li><a href="#">Elaborar Factura</a></li>
+                        <li><a href="#">Consultar Factura</a></li>
+                        <li><a href="#">Listado de Facturas</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>

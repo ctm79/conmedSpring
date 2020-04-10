@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        <nav th:replace="layouts/menu::menu"/>
         <h1>Inicio</h1>
         <a th:href="@{/agregar}">Crear Paciente</a>
         <div th:if="${pacientes != null and !pacientes.empty}">
