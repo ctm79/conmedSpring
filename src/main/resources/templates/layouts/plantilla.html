@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <link rel="stylesheet" type="text/css" href="../static/styles/style.css" th:href="@{/styles/style.css}">
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        
+        
+            <div th:fragment="header" class="jumbotron">
+                <div class="container text-center">
+                    <h1>Consulta Médica</h1>      
+                    <p>Doctor nombre apellido</p>
+                </div>
+            </div>      
+        
+        
+        <nav th:fragment="menu"  class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul  class="navbar-nav mr-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarPacientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarPacientes">
+                                <a class="dropdown-item" href="http://localhost:8080/agregar">Alta de Paciente</a>
+                                <a class="dropdown-item" href="#">Consultar Pacientes</a>
+                                <a class="dropdown-item" href="#">Buscar Pacientes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarCitas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarCitas">
+                                <a class="dropdown-item" href="http://localhost:8080/#">Agenda de citas</a>
+                                <a class="dropdown-item" href="http://localhost:8080/#">Historico de citas</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Recetas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Cartas</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="#">Analiticas</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarFacturas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarFacturas">
+                                <a class="dropdown-item" href="http://localhost:8080/#">Elaborar Factura</a>
+                                <a class="dropdown-item" href="http://localhost:8080/#">Consultar Factura</a>
+                                <a class="dropdown-item" href="http://localhost:8080/#">Listado de Facturas</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                            <li >
+                                <a><span class="glyphicon glyphicon-user"></span> Login</a>
+                            </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <footer th:fragment="footer"  class="page-footer font-small blue pt-4">
+            <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                <span> [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT-</a></span>
+                <form method="POST" th:action="@{/logout}">
+                    <b>User:</b> <span sec:authentication="name">Usuario que hizo login</span> |
+                    <b>Roles:</b> <span sec:authentication="principal.authorities">Roles</span> |
+                    <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                </form>
+            </div>
+        </footer>
+
+    </body>
+</html>

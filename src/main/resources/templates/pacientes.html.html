@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
-    <head th:replace="layouts/plantilla::head"/>
+    <head>
         <title>Inicio</title>
-        <!--
         <meta charset="UTF-8">
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-        -->
     </head>
     <body>
-        <div th:replace="layouts/plantilla::header"/>
+        <header th:replace="layouts/plantilla::header"/>
         <nav th:replace="layouts/plantilla::menu"/>
         <h1>Inicio</h1>
         <a th:href="@{/agregar}">Crear Paciente</a>
@@ -39,6 +37,6 @@
         <div th:if="${pacientes == null or pacientes.empty}">
             La lista de pacientes está vacía
         </div>
-        <footer th:replace="layouts/plantilla::footer"/>>
+        
     </body>
 </html>

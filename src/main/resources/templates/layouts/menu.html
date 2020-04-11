@@ -4,37 +4,71 @@
     <head>
         <title>Menu</title>
         <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"><link/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
-        <header>
-            <h1>Consulta Médica</h1>      
+        <header th:fragment="header">
+            <div class="jumbotron">
+                <h1>Consulta Médica</h1>      
+                <p>Doctor nombre apellido</p>
+                
+            </div>      
         </header> 
-        <nav th:fragment="menu">
-            <ul>
-                <li><a href="http://localhost:8080">Pacientes</a>
-                    <ul>
-                        <li><a href="http://localhost:8080/agregar">Alta de Paciente</a></li>
-                        <li><a href="#">Consultar Pacientes</a></li>
-                        <li><a href="#">Buscar Pacientes</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Citas</a>
-                    <ul>
-                        <li><a href="#">Agenda de Citas</a></li>
-                        <li><a href="#">Histórico de Citas</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Recetas</a></li>
-                <li><a href="#">Cartas</a></li>
-                <li><a href="#">Analíticas</a></li>
-                <li><a href="#">Facturas</a>
-                    <ul>
-                        <li><a href="#">Elaborar Factura</a></li>
-                        <li><a href="#">Consultar Factura</a></li>
-                        <li><a href="#">Listado de Facturas</a></li>
-                    </ul>
-                </li>
-            </ul>
+        
+        <nav th:fragment="menu"  class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul  class="navbar-nav mr-auto">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarPacientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarPacientes">
+                            <a class="dropdown-item" href="http://localhost:8080/agregar">Alta de Paciente</a>
+                            <a class="dropdown-item" href="#">Consultar Pacientes</a>
+                            <a class="dropdown-item" href="#">Buscar Pacientes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarCitas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarCitas">
+                            <a class="dropdown-item" href="http://localhost:8080/#">Agenda de citas</a>
+                            <a class="dropdown-item" href="http://localhost:8080/#">Historico de citas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Recetas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cartas</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">Analiticas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarFacturas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarFacturas">
+                            <a class="dropdown-item" href="http://localhost:8080/#">Elaborar Factura</a>
+                            <a class="dropdown-item" href="http://localhost:8080/#">Consultar Factura</a>
+                            <a class="dropdown-item" href="http://localhost:8080/#">Listado de Facturas</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                        <li >
+                            <a><span class="glyphicon glyphicon-user"></span> Login</a>
+                        </li>
+
+                </ul>
+            </div>
         </nav>
+        
     </body>
 </html>
