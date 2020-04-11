@@ -23,7 +23,7 @@ public class Paciente implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id_paciente;
+    private Integer id_paciente;
     @NotEmpty
     private String nombre;
     private String apellidos; 
