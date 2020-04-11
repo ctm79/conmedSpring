@@ -67,22 +67,30 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 
-                            <li >
-                                <a><span class="glyphicon glyphicon-user"></span> Login</a>
+                            <li>
+                                <span class="fas fa-user">&nbsp;</span><a sec:authentication="name"> Login</a>
                             </li>
 
                     </ul>
                 </div>
             </div>
         </nav>
-        <footer th:fragment="footer"  class="page-footer font-small blue pt-4">
+        <!-- General footer -->
+        <footer th:fragment="footer"  class="font-small bg-light mt-4 sticky-bottom">
             <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <span> [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT-</a></span>
+                <span> [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT</a></span>
                 <form method="POST" th:action="@{/logout}">
                     <b>User:</b> <span sec:authentication="name">Usuario que hizo login</span> |
                     <b>Roles:</b> <span sec:authentication="principal.authorities">Roles</span> |
                     <a href="#" onclick="this.parentNode.submit();">Logout</a>
                 </form>
+            </div>
+        </footer>
+        <!-- Login footer -->
+        <footer th:fragment="footer_login"  class="font-small bg-light mt-4 sticky-bottom">
+            <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                <span> [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT</a></span>
+                
             </div>
         </footer>
 

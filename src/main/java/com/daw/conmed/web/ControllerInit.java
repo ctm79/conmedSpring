@@ -28,10 +28,16 @@ public class ControllerInit {
     
     @GetMapping("/")
     public String inicio(Model model){
+        log.info("ejecutando el controlador Spring MVC");
+        return "index";
+    }
+    
+    @GetMapping("/pacientes")
+    public String pacientes(Model model){
         List<Paciente> pacientes = pacienteService.listarPacientes();
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("pacientes", pacientes);
-        return "index";
+        return "pacientes";
     }
     
     @GetMapping("/agregar")
