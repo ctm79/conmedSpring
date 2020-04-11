@@ -8,8 +8,8 @@
     <body>
         <div th:replace="layouts/plantilla::header"/>
         <div class="container mt-4">
-            <div class="row">
-                <h4 class=" col-12 text-center">Bienvenido a la aplicación Consulta Médica</h4>
+            <div class="row mb-4">
+                <h4 class="col-12 text-center">Bienvenido a la aplicación Consulta Médica</h4>
             </div>
             <div class="row">
                 <div class="col-md-6 mx-auto">
@@ -34,18 +34,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- 
-        <form method="POST" th:action="@{/login}">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username"/>
-            <br/>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password"/>
-            <br/>
-            <input type="submit" value="Login"/>
-        </form>
-        --> 
-        <footer th:replace="layouts/plantilla::footer_login"/>
+        <footer th:replace="layouts/plantilla_login::footer"></footer>
     </body>
 </html>

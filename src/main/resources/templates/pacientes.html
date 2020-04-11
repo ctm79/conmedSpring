@@ -12,31 +12,45 @@
     <body>
         <header th:replace="layouts/plantilla::header"/>
         <nav th:replace="layouts/plantilla::menu"/>
-        <h1>Inicio</h1>
-        <a th:href="@{/agregar}">Crear Paciente</a>
-        <div th:if="${pacientes != null and !pacientes.empty}">
-            <table border="1">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-                <tr th:each="paciente : ${pacientes}">
-                    <td th:text="${paciente.nombre}">Mostrar Nombre</td>
-                    <td th:text="${paciente.apellidos}">Mostrar Apellido</td>
-                    <td th:text="${paciente.email}">Mostrar Email</td>
-                    <td th:text="${paciente.tlf1}">Mostrar Teléfono</td>
-                    <td><a th:href="@{/editar/} + ${paciente.id_paciente}" th:text="Editar"/></td>
-                    <td><a th:href="@{/eliminar(id_paciente=${paciente.id_paciente})}" th:text="Eliminar"/></td>
-                </tr>
-            </table>
-        </div>
-        <div th:if="${pacientes == null or pacientes.empty}">
-            La lista de pacientes está vacía
-        </div>
+        
+        <section id="pacientes">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>Inicio</h1>
+                        <a th:href="@{/agregarPaciente}">Crear Paciente</a>
+                        <div th:if="${pacientes != null and !pacientes.empty}">
+                            <table class="table table-striped">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Email</th>
+                                        <th>Teléfono</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="paciente : ${pacientes}">
+                                        <td th:text="${paciente.nombre}">Mostrar Nombre</td>
+                                        <td th:text="${paciente.apellidos}">Mostrar Apellido</td>
+                                        <td th:text="${paciente.email}">Mostrar Email</td>
+                                        <td th:text="${paciente.tlf1}">Mostrar Teléfono</td>
+                                        <td><a th:href="@{/editarPaciente/} + ${paciente.id_paciente}" th:text="Editar"/></td>
+                                        <td><a th:href="@{/eliminarPaciente(id_paciente=${paciente.id_paciente})}" th:text="Eliminar"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div th:if="${pacientes == null or pacientes.empty}">
+                            La lista de pacientes está vacía
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <footer th:replace="layouts/plantilla::footer"/>
     </body>
 </html>

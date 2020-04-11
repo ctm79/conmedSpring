@@ -40,12 +40,12 @@ public class ControllerInit {
         return "pacientes";
     }
     
-    @GetMapping("/agregar")
+    @GetMapping("/agregarPaciente")
     public String agregar(Paciente paciente){
         return "modificarPaciente";
     }
     
-    @PostMapping("/guardar")
+    @PostMapping("/guardarPaciente")
     public String guardar(@Valid Paciente paciente, Errors errors){
         if (errors.hasErrors()) {
             return "modificarPaciente";
@@ -54,14 +54,14 @@ public class ControllerInit {
         return "redirect:/";
     }
     
-    @GetMapping("/editar/{id_paciente}")
+    @GetMapping("/editarPaciente/{id_paciente}")
     public String editar(Paciente paciente, Model model){
         paciente = pacienteService.encontrarPaciente(paciente);
         model.addAttribute("paciente", paciente);
         return "modificarPaciente";
     }
     
-    @GetMapping("/eliminar")
+    @GetMapping("/eliminarPaciente")
     public String eliminar(Paciente paciente){
         pacienteService.eliminar(paciente);
         return "redirect:/";

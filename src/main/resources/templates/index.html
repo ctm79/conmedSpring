@@ -1,36 +1,118 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
     <head th:replace="layouts/plantilla::head"/>
-        <title>Inicio</title>
-    </head>
-    <body>
-        <div th:replace="layouts/plantilla::header"/>
-        <nav th:replace="layouts/plantilla::menu"/>
-        <h1>Inicio</h1>
-        <a th:href="@{/agregar}">Crear Paciente</a>
-        <div th:if="${pacientes != null and !pacientes.empty}">
-            <table border="1">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-                <tr th:each="paciente : ${pacientes}">
-                    <td th:text="${paciente.nombre}">Mostrar Nombre</td>
-                    <td th:text="${paciente.apellidos}">Mostrar Apellido</td>
-                    <td th:text="${paciente.email}">Mostrar Email</td>
-                    <td th:text="${paciente.tlf1}">Mostrar Teléfono</td>
-                    <td><a th:href="@{/editar/} + ${paciente.id_paciente}" th:text="Editar"/></td>
-                    <td><a th:href="@{/eliminar(id_paciente=${paciente.id_paciente})}" th:text="Eliminar"/></td>
-                </tr>
-            </table>
+    <title>Inicio</title>
+</head>
+<body>
+    <div th:replace="layouts/plantilla::header"/>
+    <nav th:replace="layouts/plantilla::menu"/>
+    <!-- options panel -->
+    <section id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 my-4">
+                    <div class="card" style="height: 300px" >
+                        <div class="card-header bg-primary ">
+                            <h1 class="display-5 text-center pt-2" ><i class="fa fa-user text-secondary "></i><h4 class="card-title text-center">Pacientes</h4></h1>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a th:href="@{/}" class="list-group-item list-group-item-action ">Alta de paciente</a>
+                                <a href="#" class="list-group-item list-group-item-action ">Consultar paciente</a>
+                                <a th:href="@{/pacientes}" class="list-group-item list-group-item-action ">Buscar paciente</a>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 my-4">
+                    <div class="card" style="height: 300px" >
+                        <div class="card-header bg-success ">
+                            <h1 class="display-5  text-center pt-2" ><i class="fa fa-book"></i><h5 class="card-title text-center">Citas</h5></h1>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action "> Agenda de citas</a>
+                                <a href="#" class="list-group-item list-group-item-action ">Historico de citas</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 my-4">
+                    <div class="card" style="height: 300px" >
+                        <div class="card-header bg-info ">
+                            <h1 class="display-5  text-center pt-2" ><i class="fa fa-suitcase"></i><h5 class="card-title text-center">Facturas</h5></h1>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action ">Elaborar factura</a>
+                                <a href="#" class="list-group-item list-group-item-action ">Consultar factura</a>
+                                <a href="#" class="list-group-item list-group-item-action ">Listado de facturas</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 my-4">
+                    <div class="card" style="height: 200px" >
+                        <div class="card-header bg-warning ">
+                            <h1 class="display-5  text-center pt-2" ><i class="fa fa-medkit"></i><h5 class="card-title text-center">Analíticas</h5></h1>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action ">Acceder a analíticas</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 my-4">
+                    <div class="card" style="height: 200px" >
+                        <div class="card-header bg-secondary ">
+                            <h1 class="display-5  text-center pt-2" ><i class="fa fa-list-alt"></i><h5 class="card-title text-center">Recetas</h5></h1>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action ">Acceder a recetas</a>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 my-4">
+                    <div class="card" style="height: 200px" >
+                        <div class="card-header bg-danger">
+                            <h1 class="display-5  text-center pt-2" ><i class="fa fa-envelope"></i><h5 class="card-title text-center">Cartas</h5></h1>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action ">Acceder a cartas</a>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div th:if="${pacientes == null or pacientes.empty}"><i class="fas fa-bell"></i><i class="fas fa-user"></i>
-            La lista de pacientes está vacía
+
+
         </div>
-        <footer th:replace="layouts/plantilla::footer"/>
-    </body>
+
+    </section>  
+    <!-- options panel -->
+    <footer th:replace="layouts/plantilla::footer"/>
+</body>
 </html>

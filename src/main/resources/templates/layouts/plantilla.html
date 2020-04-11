@@ -25,7 +25,7 @@
         
         <nav th:fragment="menu"  class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" th:href="@{/}">Consulta</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,11 +33,11 @@
                     <ul  class="navbar-nav mr-auto">
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarPacientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
+                            <a class="nav-link dropdown-toggle"  id="navbarPacientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
                             <div class="dropdown-menu" aria-labelledby="navbarPacientes">
-                                <a class="dropdown-item" href="http://localhost:8080/agregar">Alta de Paciente</a>
+                                <a class="dropdown-item" href="http://localhost:8080/agregarPaciente">Alta de Paciente</a>
                                 <a class="dropdown-item" href="#">Consultar Pacientes</a>
-                                <a class="dropdown-item" href="#">Buscar Pacientes</a>
+                                <a class="dropdown-item" th:href="@{/pacientes}">Buscar Pacientes</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -57,7 +57,7 @@
                             <a class="nav-link" href="#">Analiticas</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarFacturas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarFacturas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Facturas</a>
                             <div class="dropdown-menu" aria-labelledby="navbarFacturas">
                                 <a class="dropdown-item" href="http://localhost:8080/#">Elaborar Factura</a>
                                 <a class="dropdown-item" href="http://localhost:8080/#">Consultar Factura</a>
@@ -68,29 +68,26 @@
                     <ul class="nav navbar-nav navbar-right">
 
                             <li>
-                                <span class="fas fa-user">&nbsp;</span><a sec:authentication="name"> Login</a>
+                                <span class="fas fa-user-md">&nbsp;</span><a sec:authentication="name"> Login</a>
                             </li>
 
                     </ul>
                 </div>
             </div>
         </nav>
-        <!-- General footer -->
-        <footer th:fragment="footer"  class="font-small bg-light mt-4 sticky-bottom">
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <span> [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT</a></span>
+        
+         <!-- General footer -->
+        <footer th:fragment="footer"  class="font-small bg-light mt-4">
+            <div class="footer-copyright text-center py-3">
                 <form method="POST" th:action="@{/logout}">
                     <b>User:</b> <span sec:authentication="name">Usuario que hizo login</span> |
                     <b>Roles:</b> <span sec:authentication="principal.authorities">Roles</span> |
                     <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                                   
                 </form>
-            </div>
-        </footer>
-        <!-- Login footer -->
-        <footer th:fragment="footer_login"  class="font-small bg-light mt-4 sticky-bottom">
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <span> [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT</a></span>
-                
+               <span class="copyleft ">&copy;</span> 2020 Copyleft:
+                    <span > [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT</a></span>
+                    
             </div>
         </footer>
 

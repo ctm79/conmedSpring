@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <link rel="stylesheet" type="text/css" href="../static/styles/style.css" th:href="@{/styles/style.css}">
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        
+        
+            <div th:fragment="header" class="jumbotron">
+                <div class="container text-center">
+                    <h1>Consulta Médica</h1>      
+                    <p>Doctor nombre apellido</p>
+                </div>
+            </div>      
+        
+        
+        
+       
+        <!-- Login footer -->
+        <footer th:fragment="footer"  class="font-small bg-light mt-4 sticky-bottom">
+            <div class="footer-copyright text-center py-3"><span class="copyleft">&copy;</span> 2020 Copyleft:
+                <span> [[#{plantilla.pie-pagina}]] <a href="#" target="_blank">CTM&LRG - DAW PROJECT</a></span>
+                
+            </div>
+        </footer>
+
+    </body>
+</html>
