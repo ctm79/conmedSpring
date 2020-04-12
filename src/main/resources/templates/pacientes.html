@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
-    <head>
-        <title>Inicio</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    </head>
+    <head th:replace="layouts/plantilla::head"/>
+    
     <body>
         <header th:replace="layouts/plantilla::header"/>
         <nav th:replace="layouts/plantilla::menu"/>
         
         <section id="pacientes">
             <div class="container">
+                
                 <div class="row">
                     <div class="col">
-                        <h1>Inicio</h1>
-                        <a th:href="@{/agregarPaciente}">Crear Paciente</a>
+                        
+                        <a class="btn btn-info" role="button" th:href="@{/agregarPaciente}">Crear Paciente</a>
                         <div th:if="${pacientes != null and !pacientes.empty}">
                             <table class="table table-striped">
                                 <thead class="thead-light">
