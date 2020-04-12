@@ -22,4 +22,6 @@ public interface PacienteService {
     
     public Paciente encontrarPaciente(Paciente paciente);
     
+    public List<Paciente> buscador(String cadena);
+    
 }

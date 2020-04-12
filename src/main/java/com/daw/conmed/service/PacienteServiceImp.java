@@ -46,4 +46,18 @@ public class PacienteServiceImp implements PacienteService {
         return pacienteDao.findById(paciente.getId_paciente()).orElse(null);
     }
     
+    /*
+    @Override
+    @Transactional (readOnly = true)
+    public List<Paciente> buscador (String cadena) {
+        return pacienteDao.findByNombreContainsIgnoreCaseOrEmailContainsIgnoreCaseOrTelefonoContainsIgnoreCase(cadena, cadena, cadena);
+    }
+    */
+    
+    @Override
+    @Transactional (readOnly = true)
+    public List<Paciente> buscador (String cadena) {
+        return pacienteDao.findByNombreContainsIgnoreCase(cadena);
+    }
+    
 }

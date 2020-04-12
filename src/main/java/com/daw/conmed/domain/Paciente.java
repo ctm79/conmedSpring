@@ -24,8 +24,10 @@ public class Paciente implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id_paciente;
+    @Column(nullable=false)
     @NotEmpty
     private String nombre;
+    @Column
     private String apellidos; 
     private String ocupacion; 
     private String direccion; 
@@ -35,6 +37,7 @@ public class Paciente implements Serializable {
     private String pais;
     private String tlf1;
     private String tlf2;
+    @Email
     private String email;
     private String web;
     private String estado_civil;

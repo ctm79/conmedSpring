@@ -6,6 +6,7 @@
 package com.daw.conmed.dao;
 
 import com.daw.conmed.domain.Paciente;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,9 @@ import org.springframework.data.repository.CrudRepository;
  * @author tron
  */
 public interface PacienteDao extends CrudRepository<Paciente, Integer>{
+    
+    //List<Paciente> findByNombreContainsIgnoreCaseOrEmailContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre, String email, String apellidos);
+    List<Paciente> findByNombreContainsIgnoreCase(String nombre);
+	
     
 }

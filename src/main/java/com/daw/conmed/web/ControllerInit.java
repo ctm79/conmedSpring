@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -26,6 +27,7 @@ public class ControllerInit {
     @Autowired
     private PacienteService pacienteService;
     
+       
     @GetMapping("/")
     public String inicio(Model model){
         log.info("ejecutando el controlador Spring MVC");
@@ -33,8 +35,9 @@ public class ControllerInit {
     }
     
     @GetMapping("/pacientes")
-    public String pacientes(Model model){
-        List<Paciente> pacientes = pacienteService.listarPacientes();
+    public String pacientes(Model model, @RequestParam(name="q", required=false) String query){
+        List<Paciente> pacientes = (query==null) ? pacienteService.listarPacientes() : pacienteService.buscador(query);
+        //List<Paciente> pacientes = pacienteService.listarPacientes();
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("pacientes", pacientes);
         return "pacientes";
