@@ -34,13 +34,13 @@ public class ControllerInit {
         return "index";
     }
     
-    @GetMapping("/pacientes")
+    @GetMapping("/listaPacientes")
     public String pacientes(Model model, @RequestParam(name="q", required=false) String query){
         List<Paciente> pacientes = (query==null) ? pacienteService.listarPacientes() : pacienteService.buscador(query);
         //List<Paciente> pacientes = pacienteService.listarPacientes();
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("pacientes", pacientes);
-        return "pacientes";
+        return "listaPacientes";
     }
     
     @GetMapping("/agregarPaciente")
@@ -69,4 +69,11 @@ public class ControllerInit {
         pacienteService.eliminar(paciente);
         return "redirect:/";
     }
+    
+    @GetMapping("/verPaciente")
+    public String verPaciente(Model model){
+        log.info("ejecutando el controlador Spring MVC");
+        return "verPaciente";
+    }
+    
 }

@@ -4,6 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:fragment="head">
         <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
         <link rel="stylesheet" type="text/css" href="../static/styles/style.css" th:href="@{/styles/style.css}">
@@ -36,8 +37,8 @@
                             <a class="nav-link dropdown-toggle"  id="navbarPacientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
                             <div class="dropdown-menu" aria-labelledby="navbarPacientes">
                                 <a class="dropdown-item" href="http://localhost:8080/agregarPaciente">Alta de Paciente</a>
-                                <a class="dropdown-item" href="#">Consultar Pacientes</a>
-                                <a class="dropdown-item" th:href="@{/pacientes}">Buscar Pacientes</a>
+                                <a class="dropdown-item" th:href="@{/verPaciente}">Consultar Pacientes</a>
+                                <a class="dropdown-item" th:href="@{/listaPacientes}">Buscar Pacientes</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
