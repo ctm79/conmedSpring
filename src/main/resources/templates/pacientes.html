@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
     <head th:replace="layouts/plantilla::head"/>
-    
+
     <body>
         <header th:replace="layouts/plantilla::header"/>
         <nav th:replace="layouts/plantilla::menu"/>
-        
+
         <section id="pacientes">
             <div class="container">
-                
+                <div class="row ">
+                    <a class="btn btn-info my-2 " role="button" th:href="@{/agregarPaciente}">
+                        <i class="fa fa-user-plus">&nbsp;</i>Crear Paciente
+
+                    </a>
+                    <!-- search control -->
+                    <form class="col-md-6 my-2 ">
+                        <input type="text" class="form-control" placeholder="Buscar..."
+                               name="q" th:value="${param.q}">
+                    </form>    
+                </div>
                 <div class="row">
-                    <div class="col">
-                        
-                        <a class="btn btn-info my-2" role="button" th:href="@{/agregarPaciente}"><i class="fa fa-user-plus">&nbsp;</i>Crear Paciente</a>
+                   
                         <div th:if="${pacientes != null and !pacientes.empty}">
                             <table class="table table-striped">
                                 <thead class="thead-light">
@@ -40,11 +48,11 @@
                         <div th:if="${pacientes == null or pacientes.empty}">
                             La lista de pacientes está vacía
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </section>
-        
+
         <footer th:replace="layouts/plantilla::footer"/>
     </body>
 </html>
