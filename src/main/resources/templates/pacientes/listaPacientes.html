@@ -29,6 +29,7 @@
                                         <th>Apellido</th>
                                         <th>Email</th>
                                         <th>Teléfono</th>
+                                        <th>Consultar</th>
                                         <th>Editar</th>
                                         <th>Eliminar</th>
                                     </tr>
@@ -39,6 +40,7 @@
                                         <td th:text="${paciente.apellidos}">Mostrar Apellido</td>
                                         <td th:text="${paciente.email}">Mostrar Email</td>
                                         <td th:text="${paciente.tlf1}">Mostrar Teléfono</td>
+                                        <td><a th:href="@{/verPaciente/} + ${paciente.id_paciente}" th:text="Consultar"/></td>
                                         <td><a th:href="@{/editarPaciente/} + ${paciente.id_paciente}" th:text="Editar"/></td>
                                         <td><a th:href="@{/eliminarPaciente(id_paciente=${paciente.id_paciente})}" th:text="Eliminar"/></td>
                                     </tr>

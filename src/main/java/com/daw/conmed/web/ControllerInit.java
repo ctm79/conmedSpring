@@ -40,18 +40,18 @@ public class ControllerInit {
         //List<Paciente> pacientes = pacienteService.listarPacientes();
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("pacientes", pacientes);
-        return "listaPacientes";
+        return "pacientes/listaPacientes";
     }
     
     @GetMapping("/agregarPaciente")
     public String agregar(Paciente paciente){
-        return "modificarPaciente";
+        return "pacientes/modificarPaciente";
     }
     
     @PostMapping("/guardarPaciente")
     public String guardar(@Valid Paciente paciente, Errors errors){
         if (errors.hasErrors()) {
-            return "modificarPaciente";
+            return "pacientes/modificarPaciente";
         }
         pacienteService.guardar(paciente);
         return "redirect:/";
@@ -61,7 +61,7 @@ public class ControllerInit {
     public String editar(Paciente paciente, Model model){
         paciente = pacienteService.encontrarPaciente(paciente);
         model.addAttribute("paciente", paciente);
-        return "modificarPaciente";
+        return "pacientes/modificarPaciente";
     }
     
     @GetMapping("/eliminarPaciente")
@@ -70,10 +70,13 @@ public class ControllerInit {
         return "redirect:/";
     }
     
-    @GetMapping("/verPaciente")
-    public String verPaciente(Model model){
-        log.info("ejecutando el controlador Spring MVC");
-        return "verPaciente";
+    @GetMapping("/verPaciente/{id_paciente}")
+    public String verPaciente(Paciente paciente, Model model){
+        paciente =  pacienteService.encontrarPaciente(paciente);
+        log.info("ejecutando el controlador verPaciente");
+        model.addAttribute("paciente", paciente);
+        return "pacientes/verPaciente";
     }
+    
     
 }
