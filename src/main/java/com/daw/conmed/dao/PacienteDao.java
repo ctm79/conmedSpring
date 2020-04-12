@@ -16,7 +16,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface PacienteDao extends CrudRepository<Paciente, Integer>{
     
     //List<Paciente> findByNombreContainsIgnoreCaseOrEmailContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre, String email, String apellidos);
-    List<Paciente> findByNombreContainsIgnoreCase(String nombre);
+    List<Paciente> findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre , String apellidos);
 	
     
 }

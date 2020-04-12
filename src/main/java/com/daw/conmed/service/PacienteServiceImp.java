@@ -57,7 +57,7 @@ public class PacienteServiceImp implements PacienteService {
     @Override
     @Transactional (readOnly = true)
     public List<Paciente> buscador (String cadena) {
-        return pacienteDao.findByNombreContainsIgnoreCase(cadena);
+        return pacienteDao.findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(cadena, cadena);
     }
     
 }
