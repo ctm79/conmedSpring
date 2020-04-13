@@ -39,13 +39,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle"  id="navbarPacientes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pacientes</a>
                             <div class="dropdown-menu" aria-labelledby="navbarPacientes">
-                                <a class="dropdown-item" href="http://localhost:8080/agregarPaciente">Alta de Paciente</a>
+                                <a class="dropdown-item" th:href="@{/agregarPaciente}">Alta de Paciente</a>
                                 <a class="dropdown-item" th:href="@{/verPaciente}">Consultar Pacientes</a>
                                 <a class="dropdown-item" th:href="@{/listaPacientes}">Buscar Pacientes</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarCitas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
+                            <a class="nav-link dropdown-toggle" id="navbarCitas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Citas</a>
                             <div class="dropdown-menu" aria-labelledby="navbarCitas">
                                 <a class="dropdown-item" href="http://localhost:8080/#">Agenda de citas</a>
                                 <a class="dropdown-item" href="http://localhost:8080/#">Historico de citas</a>
@@ -61,11 +61,11 @@
                             <a class="nav-link" href="#">Analiticas</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://localhost:8080" id="navbarFacturas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Facturas</a>
+                            <a class="nav-link dropdown-toggle" id="navbarFacturas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Facturas</a>
                             <div class="dropdown-menu" aria-labelledby="navbarFacturas">
-                                <a class="dropdown-item" href="http://localhost:8080/#">Elaborar Factura</a>
+                                <a class="dropdown-item" th:href="@{/agregarFactura}">Elaborar Factura</a>
                                 <a class="dropdown-item" href="http://localhost:8080/#">Consultar Factura</a>
-                                <a class="dropdown-item" href="http://localhost:8080/#">Listado de Facturas</a>
+                                <a class="dropdown-item" th:href="@{/listaFacturas}">Listado de Facturas</a>
                             </div>
                         </li>
                     </ul>

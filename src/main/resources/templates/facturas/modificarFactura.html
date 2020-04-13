@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
+    <head th:replace="layouts/plantilla::head"/>
+    <title>Inicio</title>
+</head>
+<body>
+    <div th:replace="layouts/plantilla::header"/>
+    <nav th:replace="layouts/plantilla::menu"/>
+
+    <section>
+        <div class="container">
+
+            <h1><span class="badge badge-secondary col">Nueva factura</span></h1>
+            <div class="row">
+
+                <div class="col">
+
+                    <form th:action="@{/guardarFactura}" method="post" th:object="${factura}">
+                        <input type="hidden" name="n_factura" th:field="*{n_factura}"/>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="localidad">Localidad:</label>
+                                <input type="text" name="localidad" th:field="*{localidad}"/>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="importe">Importe:</label>
+                                <input type="float" name="importe" th:field="*{importe}"/>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="fecha">Fecha:</label>
+                                <input type="date" name="fecha" th:field="*{fecha}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10 mb-3">
+                                <label for="vencimiento">Vencimiento:</label>
+                                <input type="date" name="vencimiento" th:field="*{vencimiento}"/>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="concepto">Concepto:</label>
+                                <input type="text" name="concepto" th:field="*{concepto}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="doctor">Doctor:</label>
+                                <input type="text" name="doctor" th:field="*{doctor}"/>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="n_colegiado">Nº Colegiado:</label>
+                                <input type="text" name="n_colegiado" th:field="*{n_colegiado}"/>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" name="direccion" th:field="*{direccion}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="poblacion">Población:</label>
+                                <input type="text" name="poblacion" th:field="*{poblacion}"/>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="dni1">D.N.I.:</label>
+                                <input type="text" name="dni1" th:field="*{dni1}"/>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="cod_fiscal">Código Fiscal:</label>
+                                <input type="text" name="cod_fiscal" th:field="*{cod_fiscal}"/>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="n_hoja">Código del Cliente:</label>
+                                <input type="number" name="n_hoja" th:field="*{n_hoja}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="dni">D.N.I.:</label>
+                                <input type="text" name="dni" th:field="*{dni}"/>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" name="nombre" th:field="*{nombre}"/>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="direccion2">Dirección:</label>
+                                <input type="text" name="direccion2" th:field="*{direccion2}"/>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="cp2">C.P.:</label>
+                                <input type="text" name="cp2" th:field="*{cp2}"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="poblacion2">Población:</label>
+                                <input type="text" name="poblacion2" th:field="*{poblacion2}"/>
+                            </div>
+                        </div>
+                        <input class="btn btn-primary btn-lg btn-block col-md-2" type="submit" name="guardar" value="Guardar"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer th:replace="layouts/plantilla::footer"/>
+</body>
+</html>
