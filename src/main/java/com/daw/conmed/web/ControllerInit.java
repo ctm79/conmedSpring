@@ -77,42 +77,4 @@ public class ControllerInit {
         model.addAttribute("paciente", paciente);
         return "pacientes/verPaciente";
     }
-    
-    @Autowired
-    private FacturaService facturaService;
-    
-    @GetMapping("/listaFacturas")
-    public String facturas(Model model){
-        List<Factura> facturas = facturaService.listarFacturas();
-        log.info("ejecutando el controlador Spring MVC");
-        model.addAttribute("facturas", facturas);
-        return "facturas/listaFacturas";
-    }
-    
-    @GetMapping("/agregarFactura")
-    public String agregar(Factura factura){
-        return "facturas/modificarFactura";
-    }
-    
-    @PostMapping("/guardarFactura")
-    public String guardar(@Valid Factura factura, Errors errors){
-        if (errors.hasErrors()) {
-            return "facturas/modificarFactura";
-        }
-        facturaService.guardar(factura);
-        return "redirect:/";
-    }
-    
-    @GetMapping("/editarFactura/{n_factura}")
-    public String editar(Factura factura, Model model){
-        factura = facturaService.encontrarFactura(factura);
-        model.addAttribute("factura", factura);
-        return "facturas/modificarFactura";
-    }
-    
-    @GetMapping("/eliminarFactura")
-    public String eliminar(Factura factura){
-        facturaService.eliminar(factura);
-        return "redirect:/";
-    }
 }
