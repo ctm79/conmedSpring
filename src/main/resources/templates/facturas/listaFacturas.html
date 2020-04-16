@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
     <head th:replace="layouts/plantilla::head"/>
-    
+
     <body>
         <header th:replace="layouts/plantilla::header"/>
         <nav th:replace="layouts/plantilla::menu"/>
-        
+
         <section id="facturas">
             <div class="container">
-                
+
                 <div class="row">
                     <div class="col">
-                        
                         <a class="btn btn-info my-2" role="button" th:href="@{/agregarFactura}"><i class="fa fa-user-plus">&nbsp;</i>Crear Factura</a>
-                        <div th:if="${facturas != null and !facturas.empty}">
-                            <table class="table table-striped">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>Fecha</th>
-                                        <th>Nombre</th>
-                                        <th>Concepto</th>
-                                        <th>Doctor</th>
-                                        <th>Editar</th>
-                                        <th>Eliminar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="factura : ${facturas}">
-                                        <td th:text="${factura.fecha}">Mostrar Nombre</td>
-                                        <td th:text="${factura.nombre}">Mostrar Apellido</td>
-                                        <td th:text="${factura.concepto}">Mostrar Email</td>
-                                        <td th:text="${factura.doctor}">Mostrar Teléfono</td>
-                                        <td><a th:href="@{/editarFactura/} + ${factura.id_factura}" th:text="Editar"/></td>
-                                        <td><a th:href="@{/eliminarFactura(id_factura=${factura.id_factura})}" th:text="Eliminar"/></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div th:if="${facturas == null or facturas.empty}">
-                            La lista de facturas está vacía
+
+                        <!-- search control -->
+                        <form class="col-md-6 my-2 ">
+                            <input type="text" class="form-control" placeholder="Buscar por nombre o apellidos..."
+                                   name="q" th:value="${param.q}">
+                        </form>  
+
+                        <div class="row">
+                            <div th:if="${facturas != null and !facturas.empty}">
+                                <table class="table table-striped">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Nombre</th>
+                                            <th>Concepto</th>
+                                            <th>Doctor</th>
+                                            <th>Editar</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="factura : ${facturas}">
+                                            <td th:text="${factura.fecha}">Mostrar Fecha</td>
+                                            <td th:text="${factura.nombre}">Mostrar Nombre</td>
+                                            <td th:text="${factura.concepto}">Mostrar Concepto</td>
+                                            <td th:text="${factura.doctor}">Mostrar Doctor</td>
+<!--                                            <td><a th:href="@{/verFactura/} + ${factura.id_factura}" th:text="Consultar"/></td>-->
+                                            <td><a th:href="@{/editarFactura/} + ${factura.id_factura}" th:text="Editar"/></td>
+                                            <td><a th:href="@{/eliminarFactura(id_factura=${factura.id_factura})}" th:text="Eliminar"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:if="${facturas == null or facturas.empty}">
+                                La lista de facturas está vacía
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
-        
+
         <footer th:replace="layouts/plantilla::footer"/>
     </body>
 </html>

@@ -1,23 +1,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">   
-    <head th:replace="layouts/plantilla::head"/>
-    <title>Inicio</title>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <link rel="stylesheet" type="text/css" href="../static/styles/style.css" th:href="@{/styles/style.css}">
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/paciente.js}"></script>
+    </head>
 <body>
     <div th:replace="layouts/plantilla::header"/>
     <nav th:replace="layouts/plantilla::menu"/>
 
     <section>
         <div class="container">
-
-            <h1><span class="badge badge-secondary col">Nueva factura</span></h1>
             <div class="row">
+                
+                <div class="col-md-11">
 
-                <div class="col">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div id="datos" class="container tab-pane active"><br>
+                            <div class="row">
 
-                    <form th:action="@{/guardarFactura}" method="post" th:object="${factura}">
-                        <input type="hidden" name="n_factura" th:field="*{n_factura}"/>
-                        <div class="row">
+                                <div class="col">
+
+                                    <form id="formDatos"   th:object="${factura}">
+                                        <input type="hidden" name="n_factura" th:field="*{n_factura}"/>
+                                                 <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="localidad">Localidad:</label>
                                 <input type="text" class="form-control" name="localidad" th:field="*{localidad}"/>
@@ -98,30 +112,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group"
-                             th:classappend="${#fields.hasErrors('paciente')} ? 'has-error'">
-                            <label class="control-label" for="paciente-datalist">Paciente:</label>
-                            <!-- Si estamos editando, queremos tomar el valor de la categoría y dejarlo visible en este campo -->
-                            <input type="text" id="paciente-datalist" th:value="${paciente?.apellidos}"
-                                   class="form-control" list="paciente-list" />
-                            <datalist id="paciente-list">
-                                <option th:each="paciente : ${pacientes}"
-                                        th:data-value="${paciente.id_paciente}" th:value="${paciente.apellidos}"></option>
-                            </datalist>
-
-                            <!-- El campo que realmente va vinculado a nuestro command object es este -->
-                            <input type="hidden" id="paciente" th:field="*{paciente}" /> <span
-                                th:if="${#fields.hasErrors('paciente')}"
-                                th:errors="*{paciente}" class="help-block" id="paciente-error">Errores</span>
+                                        <input id="modificar" class="btn btn-primary btn-lg btn-block col-md-2" type="button" name="modificar" value="Modificar"/>
+                                    </form>
+                                </div>
+                            </div>    
                         </div>
 
-                        <input class="btn btn-primary btn-lg btn-block col-md-2" type="submit" name="guardar" value="Guardar"/>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
     <footer th:replace="layouts/plantilla::footer"/>
-    <script th:src="@{/js/factura.js}"></script>
 </body>
 </html>

@@ -7,8 +7,22 @@
 
     <persistence-unit name="HibernatePU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.daw.conmed.domain.Paciente</class>
+        
+        <class>com.daw.conmed.domain.Agenda</class>
+        <class>com.daw.conmed.domain.Analitica</class>
+        <class>com.daw.conmed.domain.Analitica_base</class>
+        <class>com.daw.conmed.domain.Carta</class>
+        <class>com.daw.conmed.domain.Cita</class>
+        <class>com.daw.conmed.domain.Elementos_analitica</class>
         <class>com.daw.conmed.domain.Factura</class>
+        <class>com.daw.conmed.domain.Ficha</class>
+        <class>com.daw.conmed.domain.Historial</class>
+        <class>com.daw.conmed.domain.Imagen</class>
+        <class>com.daw.conmed.domain.Paciente</class>
+        <class>com.daw.conmed.domain.Receta</class>
+        <class>com.daw.conmed.domain.Rol</class>
+        <class>com.daw.conmed.domain.Usuario</class> 
+        
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test?useSSL=false&amp;useTimezone=true&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
             <property name="javax.persistence.jdbc.user" value="conmed"/>

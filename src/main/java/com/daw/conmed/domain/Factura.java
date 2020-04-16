@@ -44,7 +44,7 @@ public class Factura implements Serializable {
     private String cp2;
     private String poblacion2;
     
-    @JoinColumn(name="id_paciente", referencedColumnName = "id_paciente")
+    @JoinColumn(name="id_paciente", referencedColumnName = "id_paciente")     
     @ManyToOne (cascade = CascadeType.ALL)
     private Paciente paciente;
 
