@@ -19,6 +19,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Controller
 @Slf4j
@@ -26,6 +30,11 @@ public class ControllerInit {
     
     @Autowired
     private PacienteService pacienteService;
+
+    public ControllerInit(PacienteService pacienteService) {
+        this.pacienteService = pacienteService;
+    }
+    
     
        
     @GetMapping("/")
@@ -34,6 +43,27 @@ public class ControllerInit {
         return "index";
     }
     
+    
+    @GetMapping("/listaPacientes")
+    public String pacientes(Model model, @RequestParam(name="q", required=false) String query, Pageable pageable){
+        
+        if (query==null){
+            Page<Paciente> pacientes = pacienteService.listarPacientesPagina(pageable);
+            model.addAttribute("pacientes", pacientes);
+        } else {
+            List<Paciente> pacientes = pacienteService.buscador(query);
+            model.addAttribute("pacientes", pacientes);
+                    
+        }
+        //Page<Paciente> pacientes = (query==null) ? pacienteService.listarPacientesPagina(pageable) :  (Page)pacienteService.buscador(query);
+        //Page<Paciente> pacientes = (query==null) ? pacienteService.listarPacientesPagina(pageable) : pacienteService.buscador(query);
+        //List<Paciente> pacientes = pacienteService.listarPacientes();
+        //model.addAttribute("pacientes", pacientes);
+        log.info("ejecutando el controlador Spring MVC");
+        return "pacientes/listaPacientes";
+    }
+    
+    /*
     @GetMapping("/listaPacientes")
     public String pacientes(Model model, @RequestParam(name="q", required=false) String query){
         List<Paciente> pacientes = (query==null) ? pacienteService.listarPacientes() : pacienteService.buscador(query);
@@ -42,7 +72,7 @@ public class ControllerInit {
         model.addAttribute("pacientes", pacientes);
         return "pacientes/listaPacientes";
     }
-    
+    */
     @GetMapping("/agregarPaciente")
     public String agregar(Paciente paciente){
         return "pacientes/modificarPaciente";
