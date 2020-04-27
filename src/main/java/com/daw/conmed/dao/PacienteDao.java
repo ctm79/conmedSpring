@@ -11,17 +11,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author tron
  */
 //public interface PacienteDao extends CrudRepository<Paciente, Integer>{
-public interface PacienteDao extends JpaRepository<Paciente, Integer>{
-    
+//public interface PacienteDao extends JpaRepository<Paciente, Integer>{
+public interface PacienteDao extends PagingAndSortingRepository<Paciente, Integer> {
+
     //List<Paciente> findByNombreContainsIgnoreCaseOrEmailContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre, String email, String apellidos);
-    List<Paciente> findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre , String apellidos);
-    Page<Paciente> findByNombreContainsIgnoreCase(String nombre , Pageable pageable);
-	
-    
+    List<Paciente> findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(String nombre, String apellidos);
+    Page<Paciente> findByNombreContainsIgnoreCase(String nombre, Pageable pageable);
+
 }

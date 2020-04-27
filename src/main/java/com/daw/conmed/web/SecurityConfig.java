@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/editarPaciente/**", "/agregarPaciente/**", "/eliminarPaciente")
                 .hasRole("ADMIN")
                 .antMatchers("/")
