@@ -59,45 +59,45 @@
                     </div>
 
                 </div>
-                <!-- Pagination -->
-                <!--                <div class="row">
-                                    <div th:if="${pacientes.totalPages != 1}"
-                                         class="form-group col-md-11 pagination-centered">
-                                        <ul class="pagination">
-                                             If page number is 0, link is disabled 
-                                            <li th:class="${pacientes.number == 0} ? disabled">
-                                                 go to the first page  <a
-                                                    class="pageLink" th:href="@{/listaPacientes/(page=1)}">&laquo;</a>
-                                            </li>
-                                             if page number is 0, the link is disabled 
-                                            <li th:class="${pacientes.number == 0} ? disabled">
-                                                 this link goes to the previous page  
-                                                <a class="pageLink" th:href="@{/listaPacientes/(page=${pacientes.number})}">&larr;</a>
-                                            </li>
-                                             this loop generates the links to the next pages 
-                                            <li
-                                                th:class="${pacientes.number == (page-1)} ? 'active pointer-disabled'"
-                                                th:each="page : ${#numbers.sequence(1, pacientes.totalPages)}">
-                                                <a class="pageLink" th:href="@{/listaPacientes/(page=${page})}"
-                                                   th:text="${page}"></a>
-                                            </li>
-                                             Link to the last page. If stay in it, it's disabled   
-                                            <li
-                                                th:class="${pacientes.number == (pacientes.totalPages - 1)} ? disabled">
-                                                <a class="pageLink"
-                                                   th:href="@{/listaPacientes/(page=${pacientes.number + 2})}">&rarr;</a>
-                                            </li>
-                                             Link to the last page. If stay in it, it's disabled  
-                                            <li
-                                                th:class="${pacientes.number == (pacientes.totalPages - 1)} ? disabled">
-                                                <a class="pageLink"
-                                                   th:href="@{/listaPacientes/(page=${pacientes.totalPages})}">&raquo;</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>-->
+                                <!-- Pagination -->
+                <div class="row">
+                    <div th:if="${pacientes.totalPages != 1}"
+                         class="form-group col-md-11 pagination-centered">
+                        
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" th:class="${page.first? 'page-item disabled': 'page-item'}">
+                                <span class="page-link" th:if="${page.first}">Primera</span>
+                                <a class="page-link" th:if="${not page.first}" th:href="@{${page.url}(page=0)}">Primera</a>
+                            </li>
+
+                            <li class="page-item" th:class="${not page.hasPrevious? 'page-item disabled': 'page-item'}">
+                                <span class="page-link" th:if="${not page.hasPrevious}">&laquo;</span>
+                                <a class="page-link" th:if="${page.hasPrevious}" th:href="@{${page.url}(page=${page.paginaActual-2})}">&laquo;</a>
+                            </li>
+
+                            <li class="page-item" th:each="item : ${page.paginas}" th:class="${item.actual? 'page-item active': 'page-item'}">
+                                <span class="page-link" th:if="${item.actual}" th:text="${item.numero}"></span>
+                                <a class="page-link" th:if="${not item.actual}" th:href="@{${page.url}(page=${item.numero-1})}" th:text="${item.numero}"></a>
+                            </li>
+
+                            <li class="page-item" th:class="${not page.hasNext? 'page-item disabled': 'page-item'}">
+                                <span class="page-link" th:if="${not page.hasNext}">&raquo;</span>
+                                <a class="page-link" th:if="${page.hasNext}" th:href="@{${page.url}(page=${page.paginaActual})}">&raquo;</a>
+                            </li>
+
+                            <li class="page-item" th:class="${page.last? 'page-item disabled': 'page-item'}">
+                                <span class="page-link" th:if="${page.last}">&Uacute;ltima</span>
+                                <a class="page-link" th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPaginas-1})}">&Uacute;ltima</a>
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                </div>
                 <!-- End of Pagination -->
+                <!--
                 <nav th:replace="paginator-nav :: paginator"></nav>
+                -->
             </div>
         </section>
 

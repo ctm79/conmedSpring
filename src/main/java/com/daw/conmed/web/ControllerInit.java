@@ -46,18 +46,18 @@ public class ControllerInit {
     @GetMapping("/listaPacientes")
     public String pacientes(Model model, @RequestParam(name = "q", required = false) String query, @RequestParam(name = "page", defaultValue = "0") int page, Pageable pageable) {
 
-        Pageable pageRequest = PageRequest.of(page, 10);
+        //Pageable pageRequest = PageRequest.of(page, 10);
 
         if (query == null) {
-            Page<Paciente> pacientes = pacienteService.listarPacientesPagina(pageRequest);
-            PageRender<Paciente> pageRender = new PageRender<Paciente>("/listaPacientes", pacientes);
+            Page<Paciente> pacientes = pacienteService.listarPacientesPagina(pageable);
+            PageRender<Paciente> pageRender = new PageRender<>("/listaPacientes", pacientes);
             model.addAttribute("pacientes", pacientes);
             model.addAttribute("page", pageRender);
 
         } else {
 
-            Page<Paciente> pacientes = pacienteService.buscadorPagina(pageRequest, query);
-            PageRender<Paciente> pageRender = new PageRender<Paciente>("/listaPacientes", pacientes);
+            Page<Paciente> pacientes = pacienteService.buscadorPagina(pageable, query);
+            PageRender<Paciente> pageRender = new PageRender<>("/listaPacientes", pacientes);
             model.addAttribute("pacientes", pacientes);
             model.addAttribute("page", pageRender);
         }

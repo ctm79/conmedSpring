@@ -69,10 +69,10 @@ public class PacienteServiceImp implements PacienteService {
        return (Page<Paciente>) pacienteDao.findAll(pageable);
     } 
     
-    
+    @Override
     @Transactional (readOnly = true)
     public Page<Paciente> buscadorPagina (Pageable pageable, String cadena) {
-        return pacienteDao.findByNombreContainsIgnoreCase(cadena, pageable);
+        return (Page<Paciente>) pacienteDao.findByNombreContainsIgnoreCase(cadena, pageable);
     }
     
 }
