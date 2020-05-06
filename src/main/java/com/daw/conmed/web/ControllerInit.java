@@ -25,8 +25,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/")
 @Slf4j
 public class ControllerInit {
 
@@ -44,26 +47,31 @@ public class ControllerInit {
     }
 
     @GetMapping("/listaPacientes")
-    public String pacientes(Model model, @RequestParam(name = "q", required = false) String query, @RequestParam(name = "page", defaultValue = "0") int page, Pageable pageable) {
-
+////    public String pacientes(Model model, @RequestParam(name = "q", required = false) String query, @RequestParam(name = "page", defaultValue = "0") int page, Pageable pageable) {
+    public String pacientes(Model model, @RequestParam(name = "page", defaultValue = "0") int page, Pageable pageable) {
         Pageable pageRequest = PageRequest.of(page, 10);
-
-        if (query == null) {
-            Page<Paciente> pacientes = pacienteService.listarPacientesPagina(pageRequest);
-            PageRender<Paciente> pageRender = new PageRender<Paciente>("/listaPacientes", pacientes);
-            model.addAttribute("pacientes", pacientes);
-            model.addAttribute("page", pageRender);
-
-        } else {
-
-            Page<Paciente> pacientes = pacienteService.buscadorPagina(pageRequest, query);
-            PageRender<Paciente> pageRender = new PageRender<Paciente>("/listaPacientes", pacientes);
-            model.addAttribute("pacientes", pacientes);
-            model.addAttribute("page", pageRender);
-        }
-
+//
+////        if (query == null) {
+        Page<Paciente> pacientes = pacienteService.listarPacientesPagina(pageRequest);
+        PageRender<Paciente> pageRender = new PageRender<Paciente>("/listaPacientes", pacientes);
+        model.addAttribute("pacientes", pacientes);
+        model.addAttribute("page", pageRender);
+//
+////        } else {
+////
+////            Page<Paciente> pacientes = pacienteService.buscadorPagina(pageRequest, query);
+////            PageRender<Paciente> pageRender = new PageRender<Paciente>("/listaPacientes", pacientes);
+////            model.addAttribute("pacientes", pacientes);
+////            model.addAttribute("page", pageRender);
+////        }
         log.info("ejecutando el controlador Spring MVC");
         return "pacientes/listaPacientes";
+    }
+
+    @GetMapping(value = "/cargar-pacientes/{term}", produces = {"application/json"})
+    public @ResponseBody
+    List<Paciente> cargarPacientes(@PathVariable String term) {
+        return pacienteService.findByApellidos(term);
     }
 
 //    @GetMapping("/listaPacientes")

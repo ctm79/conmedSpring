@@ -98,22 +98,30 @@
                             </div>
                         </div>
 
-                        <div class="form-group"
-                             th:classappend="${#fields.hasErrors('paciente')} ? 'has-error'">
-                            <label class="control-label" for="paciente-datalist">Paciente:</label>
-                            <!-- Si estamos editando, queremos tomar el valor de la categoría y dejarlo visible en este campo -->
-                            <input type="text" id="paciente-datalist" th:value="${paciente?.apellidos}"
-                                   class="form-control" list="paciente-list" />
-                            <datalist id="paciente-list">
-                                <option th:each="paciente : ${pacientes}"
-                                        th:data-value="${paciente.id_paciente}" th:value="${paciente.apellidos}"></option>
-                            </datalist>
-
-                            <!-- El campo que realmente va vinculado a nuestro command object es este -->
-                            <input type="hidden" id="paciente" th:field="*{paciente}" /> <span
-                                th:if="${#fields.hasErrors('paciente')}"
-                                th:errors="*{paciente}" class="help-block" id="paciente-error">Errores</span>
+                        <div class="form-group row">
+                            <label for="buscar_paciente" class="col-sm-2 col-form-label"
+                                   th:text="'Buscar paciente:'"></label>
+                            <div class="col-sm-6">
+                                <input type="text" name="buscar_paciente" id="buscar_paciente"
+                                       class="form-control" />
+                            </div>
                         </div>
+                        <!--                        <div class="form-group"
+                                                     th:classappend="${#fields.hasErrors('paciente')} ? 'has-error'">
+                                                    <label class="control-label" for="paciente-datalist">Paciente:</label>
+                                                     Si estamos editando, queremos tomar el valor de la categoría y dejarlo visible en este campo 
+                                                    <input type="text" id="paciente-datalist" th:value="${paciente?.apellidos}"
+                                                           class="form-control" list="paciente-list" />
+                                                    <datalist id="paciente-list">
+                                                        <option th:each="paciente : ${pacientes}"
+                                                                th:data-value="${paciente.id_paciente}" th:value="${paciente.apellidos}"></option>
+                                                    </datalist>
+                        
+                                                     El campo que realmente va vinculado a nuestro command object es este 
+                                                    <input type="hidden" id="paciente" th:field="*{paciente}" /> <span
+                                                        th:if="${#fields.hasErrors('paciente')}"
+                                                        th:errors="*{paciente}" class="help-block" id="paciente-error">Errores</span>
+                                                </div>-->
 
                         <input class="btn btn-primary btn-lg btn-block col-md-2" type="submit" name="guardar" value="Guardar"/>
                     </form>
@@ -122,6 +130,6 @@
         </div>
     </section>
     <footer th:replace="layouts/plantilla::footer"/>
-    <script th:src="@{/js/factura.js}"></script>
+    <script th:replace="pacientes/autocomplete-pacientes :: javascript"></script>
 </body>
 </html>
