@@ -19,17 +19,23 @@ import lombok.Data;
 @Table(name="recetas")
 public class Receta implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "codigo", nullable = false)
+    private Integer codigo;
+    @Lob
+    @Size(max = 2147483647)
+    @Column(name = "contenido", length = 2147483647)
+    private String contenido;
+
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer codigo;
-    
-    private String contenido;
     
     @JoinColumn(name="id_paciente", referencedColumnName = "id_paciente")
     @ManyToOne (cascade = CascadeType.ALL)
     private Paciente paciente;
- 
+
+   
     
 }

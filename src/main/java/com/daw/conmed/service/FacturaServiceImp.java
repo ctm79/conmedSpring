@@ -6,7 +6,9 @@
 package com.daw.conmed.service;
 
 import com.daw.conmed.dao.FacturaDao;
+import com.daw.conmed.dao.PacienteDao;
 import com.daw.conmed.domain.Factura;
+import com.daw.conmed.domain.Paciente;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,9 @@ public class FacturaServiceImp implements FacturaService {
     
     @Autowired
     private FacturaDao facturaDao;
+    private PacienteDao pacienteDao;
+    
+    
 
     @Override
     @Transactional(readOnly = true)
@@ -44,6 +49,12 @@ public class FacturaServiceImp implements FacturaService {
     @Transactional(readOnly = true)
     public Factura encontrarFactura(Factura factura) {
         return facturaDao.findById(factura.getN_factura()).orElse(null);
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Paciente encontrarPaciente(Paciente paciente) {
+        return pacienteDao.findById(paciente.getId_paciente()).orElse(null);
     }
      
 }

@@ -24,9 +24,14 @@ public interface PacienteService {
     
     public Paciente encontrarPaciente(Paciente paciente);
     
-    public List<Paciente> buscador(String cadena);
+    
+//    public List<Paciente> buscador(String cadena);
     
     public Page<Paciente> listarPacientesPagina(Pageable pageable);
     
-    public Page<Paciente> buscadorPagina(Pageable pageable, String cadena);
+//    public Page<Paciente> buscadorPagina(Pageable pageable, String cadena);
+    
+    public List<Paciente> findByApellidos(String term);
+    
+    
 }

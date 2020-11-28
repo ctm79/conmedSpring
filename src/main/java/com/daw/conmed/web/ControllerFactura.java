@@ -27,6 +27,12 @@ public class ControllerFactura {
     @Autowired
     private FacturaService facturaService;
     
+    
+    public ControllerFactura(FacturaService facturaService) {
+        this.facturaService = facturaService;
+    }
+
+    
     @GetMapping("/listaFacturas")
     public String facturas(Model model){
         List<Factura> facturas = facturaService.listarFacturas();

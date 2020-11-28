@@ -48,31 +48,15 @@ public class PacienteServiceImp implements PacienteService {
         return pacienteDao.findById(paciente.getId_paciente()).orElse(null);
     }
     
-    /*
-    @Override
-    @Transactional (readOnly = true)
-    public List<Paciente> buscador (String cadena) {
-        return pacienteDao.findByNombreContainsIgnoreCaseOrEmailContainsIgnoreCaseOrTelefonoContainsIgnoreCase(cadena, cadena, cadena);
-    }
-    */
-    
-    @Override
-    @Transactional (readOnly = true)
-    public List<Paciente> buscador (String cadena) {
-        return pacienteDao.findByNombreContainsIgnoreCaseOrApellidosContainsIgnoreCase(cadena, cadena);
-    }
-    
     
     @Override
     @Transactional(readOnly = true)
     public Page<Paciente> listarPacientesPagina(Pageable pageable) {
        return (Page<Paciente>) pacienteDao.findAll(pageable);
     } 
-    
-    @Override
-    @Transactional (readOnly = true)
-    public Page<Paciente> buscadorPagina (Pageable pageable, String cadena) {
-        return (Page<Paciente>) pacienteDao.findByNombreContainsIgnoreCase(cadena, pageable);
-    }
-    
+  
+	@Transactional(readOnly = true)
+	public List<Paciente> findByApellidos(String term) {
+		return pacienteDao.findByApellidosLikeIgnoreCase("%" + term + "%");
+	}
 }

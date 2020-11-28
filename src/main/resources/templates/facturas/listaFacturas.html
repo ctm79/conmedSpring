@@ -39,9 +39,9 @@
                                             <td th:text="${factura.nombre}">Mostrar Nombre</td>
                                             <td th:text="${factura.concepto}">Mostrar Concepto</td>
                                             <td th:text="${factura.doctor}">Mostrar Doctor</td>
-                                            <td><a th:href="@{/verFactura/} + ${factura.id_factura}" th:text="Consultar"/></td>
-                                            <td><a th:href="@{/editarFactura/} + ${factura.id_factura}" th:text="Editar"/></td>
-                                            <td><a th:href="@{/eliminarFactura(id_factura=${factura.id_factura})}" th:text="Eliminar"/></td>
+                                            <td><a th:href="@{/verFactura/} + ${factura.n_factura}" th:text="Consultar"/></td>
+                                            <td><a th:href="@{/editarFactura/} + ${factura.n_factura}" th:text="Editar"/></td>
+                                            <td><a th:href="@{/eliminarFactura(id_factura=${factura.n_factura})}" th:text="Eliminar"/></td>
                                         </tr>
                                     </tbody>
                                 </table>

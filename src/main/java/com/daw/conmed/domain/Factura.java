@@ -25,7 +25,9 @@ public class Factura implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer n_factura;
-    
+    @JoinColumn(name="id_paciente", referencedColumnName = "id_paciente")     
+    @ManyToOne (cascade = CascadeType.ALL)
+    private Paciente id_paciente;    
     private String localidad;
     private Float importe;
     private Date fecha;
@@ -44,8 +46,8 @@ public class Factura implements Serializable {
     private String cp2;
     private String poblacion2;
     
-    @JoinColumn(name="id_paciente", referencedColumnName = "id_paciente")     
-    @ManyToOne (cascade = CascadeType.ALL)
-    private Paciente paciente;
+    
+    
+    
 
 }

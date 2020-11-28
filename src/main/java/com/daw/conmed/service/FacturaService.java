@@ -6,6 +6,7 @@
 package com.daw.conmed.service;
 
 import com.daw.conmed.domain.Factura;
+import com.daw.conmed.domain.Paciente;
 import java.util.List;
 
 /**
@@ -21,5 +22,7 @@ public interface FacturaService {
     public void eliminar(Factura factura);
     
     public Factura encontrarFactura(Factura factura);
+    
+    public Paciente encontrarPaciente(Paciente paciente);
     
 }

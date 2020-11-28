@@ -85,10 +85,17 @@
             <artifactId>webjars-locator</artifactId>
             <version>0.39</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/jquery-ui -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-ui</artifactId>
+            <version>1.12.1</version>
+        </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>               
             <artifactId>querydsl-jpa</artifactId>
         </dependency>  
+
     </dependencies>
     
 
